@@ -8,6 +8,7 @@ import com.alibaba.fastjson.JSON;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -60,6 +61,9 @@ public class JSONObject extends BaseJson<JSONObject> implements JsonObject {
         if(t instanceof com.alibaba.fastjson.JSONObject){
             return new JSONObject((com.alibaba.fastjson.JSONObject) t);
         }
+        if(t instanceof Map){
+            return new JSONObject((Map<String, Object>) t);
+        }
 
         return (JsonObject) t;
     }
@@ -74,6 +78,9 @@ public class JSONObject extends BaseJson<JSONObject> implements JsonObject {
 
         if(t instanceof com.alibaba.fastjson.JSONArray){
             return new JSONArray((com.alibaba.fastjson.JSONArray)t);
+        }
+        if(t instanceof List){
+            return new JSONArray((List<Object>) t);
         }
         return (JsonArray) t;
     }

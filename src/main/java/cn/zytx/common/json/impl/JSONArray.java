@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,6 +19,9 @@ public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
     private com.alibaba.fastjson.JSONArray jsonArray;
     public JSONArray(com.alibaba.fastjson.JSONArray jsonArray){
         this.jsonArray = jsonArray;
+    }
+    public JSONArray(List<Object> list){
+        this.jsonArray = new com.alibaba.fastjson.JSONArray(list);
     }
     public JSONArray(){
         this.jsonArray = new com.alibaba.fastjson.JSONArray();
@@ -91,6 +95,9 @@ public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
         if(opt instanceof com.alibaba.fastjson.JSONObject){
             return new JSONObject((com.alibaba.fastjson.JSONObject)opt);
         }
+        if(opt instanceof Map){
+            return new JSONObject((Map<String, Object>) opt);
+        }
         return (JsonObject) opt;
     }
 
@@ -100,6 +107,9 @@ public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
         Object opt = jsonArray.get(index);
         if(opt instanceof com.alibaba.fastjson.JSONArray){
             return new JSONArray((com.alibaba.fastjson.JSONArray)opt);
+        }
+        if(opt instanceof List){
+            return new JSONArray((List)opt);
         }
         return (JsonArray) opt;
     }
