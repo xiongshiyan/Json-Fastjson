@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author xiongshiyan at 2018/6/11
  */
-public class JSONArray extends JsonBase implements JsonArray {
+public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
     private com.alibaba.fastjson.JSONArray jsonArray;
     public JSONArray(com.alibaba.fastjson.JSONArray jsonArray){
         this.jsonArray = jsonArray;
