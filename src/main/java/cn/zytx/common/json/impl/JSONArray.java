@@ -137,7 +137,9 @@ public class JSONArray extends JsonBase implements JsonArray {
 
     @Override
     public JsonArray parse(String jsonString) {
-        return new JSONArray(JSON.parseArray(jsonString));
+        this.jsonArray = JSON.parseArray(jsonString);
+        return this;
+        //return new JSONArray(JSON.parseArray(jsonString));
     }
 
     @Override

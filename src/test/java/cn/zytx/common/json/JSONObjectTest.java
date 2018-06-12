@@ -251,6 +251,7 @@ public class JSONObjectTest {
     public void parse() throws Exception {
         JsonObject parse = jsonObject.parse("{\"xx\":\"ss\" , \"ss\":{\"cc\":12}}");
         Assert.assertEquals("{\"ss\":{\"cc\":12},\"xx\":\"ss\"}" , parse.toString());
+        Assert.assertEquals("{\"ss\":{\"cc\":12},\"xx\":\"ss\"}" , jsonObject.toString());
     }
 
     @Test

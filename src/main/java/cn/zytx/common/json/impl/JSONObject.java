@@ -244,7 +244,9 @@ public class JSONObject extends JsonBase implements JsonObject {
 
     @Override
     public JsonObject parse(String jsonString) {
-        return new JSONObject(JSON.parseObject(jsonString));
+        jsonObject = JSON.parseObject(jsonString);
+        return this;
+        //return new JSONObject(JSON.parseObject(jsonString));
     }
 
     @Override
