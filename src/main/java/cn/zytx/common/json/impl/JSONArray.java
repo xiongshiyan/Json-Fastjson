@@ -185,4 +185,10 @@ public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
     public boolean equals(Object obj) {
         return jsonArray.equals(obj);
     }
+
+    @Override
+    public JsonArray fromList(List<Object> list) {
+        jsonArray = new com.alibaba.fastjson.JSONArray(list);
+        return this;
+    }
 }
