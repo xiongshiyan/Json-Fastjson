@@ -240,8 +240,9 @@ public class JSONObject extends BaseJson<JSONObject> implements JsonObject {
     }
 
     @Override
-    public void clear() {
+    public JsonObject clear() {
         jsonObject.clear();
+        return this;
     }
 
     @Override
