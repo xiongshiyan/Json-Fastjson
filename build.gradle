@@ -1,5 +1,11 @@
-group 'top.jfunc.json'
-version '1.0'
+def VERSION = '1.0'
+def ARTIFACT_ID = 'json-fastjson'
+def GROUP_ID = 'top.jfunc.json'
+def TYPE = 'jar'
+def DESCRIPTION = 'common json interface implements by fastjson'
+
+group GROUP_ID
+version VERSION
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -24,13 +30,7 @@ def MAVEN_REPO_SNAPSHOT_URL= 'http://192.168.2.188:8081/nexus/content/repositori
 def NEXUS_USERNAME='admin'
 //登录nexus oss的密码
 def NEXUS_PASSWORD='admin123'
-def VERSION = '1.0'
-def ARTIFACT_ID = 'json-fastjson'
-def GROUP_ID = 'top.jfunc.json'
-// type
-def TYPE = 'jar'
-//description
-def DESCRIPTION = 'This is Token service included add,edit,delete,query'
+
 
 publishing {
     publications {
