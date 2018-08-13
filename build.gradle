@@ -6,6 +6,9 @@ def DESCRIPTION = 'common json interface implements by fastjson'
 
 group GROUP_ID
 version VERSION
+applicationName = "Json-Fastjson"
+archivesBaseName = System.getProperty("jarName") ?: "Json-Fastjson"
+
 
 buildscript {
     repositories {
