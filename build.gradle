@@ -147,7 +147,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = 'json-fastjson-with-lowwer-artifact' //项目名称
+        name = ARTIFACT_ID //项目名称
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
