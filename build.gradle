@@ -5,7 +5,7 @@ def TYPE = 'jar'
 def DESCRIPTION = 'common json interface implements by fastjson'
 def gitUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson.git'
 def siteUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson'
-
+def REPO_NAME = 'json'
 
 group GROUP_ID
 version VERSION
@@ -39,7 +39,7 @@ repositories {
 
 dependencies {
     compile group: 'com.alibaba',name: 'fastjson',version: '1.1.43'
-    compile 'top.jfunc.json:common-json:1.0'
+    compile 'top.jfunc.json:json-common:1.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
@@ -147,7 +147,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = REPO_NAME
         name = ARTIFACT_ID //项目名称
         websiteUrl = siteUrl
         vcsUrl = gitUrl
