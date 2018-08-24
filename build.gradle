@@ -1,8 +1,11 @@
 def VERSION = '1.0'
-def ARTIFACT_ID = 'Json-Fastjson'
+def ARTIFACT_ID = 'json-fastjson'
 def GROUP_ID = 'top.jfunc.json'
 def TYPE = 'jar'
 def DESCRIPTION = 'common json interface implements by fastjson'
+def gitUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson.git'
+def siteUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson'
+
 
 group GROUP_ID
 version VERSION
@@ -36,6 +39,7 @@ repositories {
 
 dependencies {
     compile group: 'com.alibaba',name: 'fastjson',version: '1.1.43'
+    compile 'top.jfunc.json:common-json:1.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
@@ -69,9 +73,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-
-def gitUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson.git'
-def siteUrl = 'https://gitee.com/xxssyyyyssxx/Json-fastjson'
 
 install {
     repositories.mavenInstaller {

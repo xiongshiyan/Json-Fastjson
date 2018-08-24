@@ -1,9 +1,9 @@
 package top.jfunc.json.impl;
 
+import com.alibaba.fastjson.JSON;
 import top.jfunc.json.Json;
 import top.jfunc.json.JsonArray;
 import top.jfunc.json.JsonObject;
-import com.alibaba.fastjson.JSON;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
