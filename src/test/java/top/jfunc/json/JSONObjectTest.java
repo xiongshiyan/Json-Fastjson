@@ -281,4 +281,16 @@ public class JSONObjectTest {
         JsonObject parse = jsonObject.parse("{\"bigDecimal1\":1,\"bigInteger1\":1,\"boolean1\":true,\"double1\":1,\"float1\":1,\"integer1\":1,\"k1\":\"v1\",\"k2\":\"v2\",\"k3\":{\"k1\":\"v1\"},\"long1\":1}");
         System.out.println(parse.toString());
     }
+    @Test
+    public void testIgnore() throws Exception {
+        ObjectFieldBean bean = new ObjectFieldBean();
+        bean.setK1("k1");//JsonField指定忽略
+        bean.setK2("k2");//直接指定忽略
+        bean.setK3("k3");//kk
+        bean.setK4("k4");//k4
+        //bean.setK5("k5");//null
+        String serialize = new JSONObject().serialize(bean , false ,"k2");
+        System.out.println(serialize);
+        Assert.assertEquals("{\"kk\":\"k3\",\"k4\":\"k4\"}" , serialize);
+    }
 }

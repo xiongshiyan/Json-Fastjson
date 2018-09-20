@@ -1,16 +1,16 @@
 package top.jfunc.json.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.*;
 import top.jfunc.json.Json;
 import top.jfunc.json.JsonArray;
 import top.jfunc.json.JsonObject;
+import top.jfunc.json.filter.ExcludePropertyPreFilter;
+import top.jfunc.json.filter.FieldNameChangeFilter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author xiongshiyan at 2018/6/10
@@ -262,9 +262,22 @@ public class JSONObject extends BaseJson<JSONObject> implements JsonObject {
         return new JSONObject(new com.alibaba.fastjson.JSONObject(map));
     }
 
+    /**
+     * @param javaBean 需要序列化的javabean
+     * @param nullHold null是否保留
+     * @param ignoreFields 忽略的字段
+     */
     @Override
-    public String serialize(Object javaBean) {
-        return JSON.toJSONString(javaBean);
+    public String serialize(Object javaBean , boolean nullHold , String... ignoreFields) {
+        //去掉忽略的字段(包括直接指定和使用JsonField指定的)
+        PropertyPreFilter propertyPreFilter = new ExcludePropertyPreFilter(javaBean.getClass() , ignoreFields);
+        //JsonField指定filed
+        NameFilter nameFilter = new FieldNameChangeFilter();
+        if(nullHold){
+            return JSON.toJSONString(javaBean , new SerializeFilter[]{propertyPreFilter , nameFilter}  , SerializerFeature.WriteMapNullValue);
+        }else {
+            return JSON.toJSONString(javaBean , new SerializeFilter[]{propertyPreFilter , nameFilter} );
+        }
     }
 
     @Override
