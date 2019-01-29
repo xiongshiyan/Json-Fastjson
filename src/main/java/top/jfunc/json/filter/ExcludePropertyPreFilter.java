@@ -55,7 +55,6 @@ public class ExcludePropertyPreFilter implements PropertyPreFilter {
                 return false;
             }
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
             return true;
         }
         return true;
