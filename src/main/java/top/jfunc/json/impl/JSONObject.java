@@ -1,7 +1,10 @@
 package top.jfunc.json.impl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.*;
+import com.alibaba.fastjson.serializer.NameFilter;
+import com.alibaba.fastjson.serializer.PropertyPreFilter;
+import com.alibaba.fastjson.serializer.SerializeFilter;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import top.jfunc.json.Json;
 import top.jfunc.json.JsonArray;
 import top.jfunc.json.JsonObject;
@@ -10,7 +13,10 @@ import top.jfunc.json.filter.FieldNameChangeFilter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author xiongshiyan at 2018/6/10
@@ -310,4 +316,25 @@ public class JSONObject extends BaseJson<JSONObject> implements JsonObject {
         return jsonObject.equals(obj);
     }
 
+    @Override
+    public Json toJson(Object o) {
+        if(null == o){
+            return null;
+        }
+
+        if(o instanceof com.alibaba.fastjson.JSONObject){
+            return new JSONObject((com.alibaba.fastjson.JSONObject) o);
+        }
+        if(o instanceof Map){
+            return new JSONObject((Map<String, Object>) o);
+        }
+
+        if(o instanceof com.alibaba.fastjson.JSONArray){
+            return new JSONArray((com.alibaba.fastjson.JSONArray) o);
+        }
+        if(o instanceof List){
+            return new JSONArray((List<Object>) o);
+        }
+        return (Json)o;
+    }
 }

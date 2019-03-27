@@ -191,4 +191,25 @@ public class JSONArray extends BaseJson<JSONArray> implements JsonArray {
         jsonArray = new com.alibaba.fastjson.JSONArray(list);
         return this;
     }
+
+    @Override
+    public Json toJson(Object o) {
+        if(null == o){
+            return null;
+        }
+
+        if(o instanceof com.alibaba.fastjson.JSONArray){
+            return new JSONArray((com.alibaba.fastjson.JSONArray) o);
+        }
+        if(o instanceof List){
+            return new JSONArray((List<Object>) o);
+        }
+        if(o instanceof com.alibaba.fastjson.JSONObject){
+            return new JSONObject((com.alibaba.fastjson.JSONObject) o);
+        }
+        if(o instanceof Map){
+            return new JSONObject((Map<String, Object>) o);
+        }
+        return (Json)o;
+    }
 }
